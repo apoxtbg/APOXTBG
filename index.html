@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html lang="tr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="theme-color" content="#080914">
+
+<title>APOXTBG AI</title>
+
+<style>
+
+*{box-sizing:border-box}
+
+body{
+
+ margin:0;background:#080914;color:white;
+
+ font-family:Arial,sans-serif;
+
+}
+
+header{
+
+ padding:22px;display:flex;align-items:center;
+
+ gap:12px;border-bottom:1px solid #25263b;
+
+}
+
+.logo{
+
+ width:42px;height:42px;border-radius:14px;
+
+ background:linear-gradient(135deg,#883cff,#277bff);
+
+ display:grid;place-items:center;font-weight:bold;
+
+ font-size:23px;
+
+}
+
+header h2{margin:0}
+
+main{max-width:650px;margin:auto;padding:22px}
+
+.welcome{text-align:center;margin:65px 0 35px}
+
+.welcome h1{
+
+ font-size:32px;
+
+ background:linear-gradient(90deg,#a45aff,#42a5ff);
+
+ color:transparent;background-clip:text;
+
+}
+
+.welcome p{color:#999}
+
+#messages{
+
+ display:flex;flex-direction:column;gap:15px;
+
+ padding-bottom:20px;
+
+}
+
+.msg{
+
+ padding:14px 17px;border-radius:17px;
+
+ max-width:88%;line-height:1.5;
+
+ white-space:pre-wrap;
+
+}
+
+.user{
+
+ align-self:flex-end;background:#5733a8;
+
+}
+
+.bot{
+
+ align-self:flex-start;background:#191b2c;
+
+}
+
+.inputarea{
+
+ position:fixed;bottom:0;left:0;right:0;
+
+ padding:15px;background:#080914;
+
+ border-top:1px solid #292a40;
+
+ display:flex;gap:9px;
+
+}
+
+.inputarea input{
+
+ flex:1;min-width:0;padding:15px;
+
+ border-radius:15px;border:1px solid #41415e;
+
+ background:#17182a;color:white;font-size:16px;
+
+}
+
+button{
+
+ border:0;border-radius:14px;padding:0 19px;
+
+ background:linear-gradient(135deg,#963fff,#287dff);
+
+ color:white;font-size:17px;font-weight:bold;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+ <div class="logo">A</div>
+
+ <h2>APOXTBG</h2>
+
+</header>
+
+<main>
+
+ <section class="welcome" id="welcome">
+
+  <h1>Merhaba, ben APOXTBG.</h1>
+
+  <p>Size nasıl yardımcı olabilirim?</p>
+
+ </section>
+
+ <div id="messages"></div>
+
+</main>
+
+<div class="inputarea">
+
+ <input id="question" placeholder="APOXTBG'ye mesaj yaz...">
+
+ <button onclick="sendMessage()">➤</button>
+
+</div>
+
+<script>
+
+function sendMessage(){
+
+ const input=document.getElementById("question");
+
+ const value=input.value.trim();
+
+ if(!value)return;
+
+ document.getElementById("welcome").style.display="none";
+
+ const messages=document.getElementById("messages");
+
+ const user=document.createElement("div");
+
+ user.className="msg user";
+
+ user.textContent=value;
+
+ messages.appendChild(user);
+
+ input.value="";
+
+ const bot=document.createElement("div");
+
+ bot.className="msg bot";
+
+ bot.textContent="Merhaba! Ben APOXTBG. Sohbet sistemim hazırlanıyor. Yapay zekâ bağlantısı bir sonraki aşamada eklenecek.";
+
+ messages.appendChild(bot);
+
+ window.scrollTo(0,document.body.scrollHeight);
+
+}
+
+document.getElementById("question").addEventListener("keydown",e=>{
+
+ if(e.key==="Enter")sendMessage();
+
+});
+
+</script>
+
+</body>
+
+</html>
